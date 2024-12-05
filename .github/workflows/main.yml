@@ -17,25 +17,9 @@ jobs:
         run: |
           npm install
 
-  docker-image:
-    runs-on: ubuntu-latest
-    needs: repo-name
-    steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-      - name: Login en DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Build
-        run: docker build -t ${{ vars.DOCKER_USER }}/back-image:latest  .
-      - name: Push
-        run: docker push ${{ vars.DOCKER_USER }}/back-image:latest 
 
   image-to-github:
     runs-on: ubuntu-latest
-    needs: docker-image
     permissions:
       contents: read
       packages: write
