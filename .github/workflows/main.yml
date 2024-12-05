@@ -41,4 +41,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ghcr.io/sandra-eyo/examen-back /back-image:latest
+          tags: ghcr.io/sandra-eyo/examen-back/back-image:latest
